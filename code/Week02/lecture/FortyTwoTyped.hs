@@ -1,35 +1,3 @@
-<<<<<<< HEAD
-{-# LANGUAGE DataKinds           #-}
-{-# LANGUAGE ImportQualifiedPost #-}
-{-# LANGUAGE NoImplicitPrelude   #-}
-{-# LANGUAGE TemplateHaskell     #-}
-
-module FortyTwoTyped where
-
-import qualified Plutus.V2.Ledger.Api as PlutusV2
-import           PlutusTx             (compile)
-import           PlutusTx.Prelude     (Bool, Eq ((==)), Integer)
-import           Prelude              (IO)
-import           Utilities            (wrap, writeValidatorToFile)
-
----------------------------------------------------------------------------------------------------
------------------------------------ ON-CHAIN / VALIDATOR ------------------------------------------
-
--- This validator succeeds only if the redeemer is 42
---              Datum  Redeemer        ScriptContext
-mk42Validator :: () -> Integer -> PlutusV2.ScriptContext -> Bool
-mk42Validator _ r _ = r == 42
-{-# INLINABLE mk42Validator #-}
-
-validator :: PlutusV2.Validator
-validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile [|| wrap mk42Validator ||])
-
----------------------------------------------------------------------------------------------------
-------------------------------------- HELPER FUNCTIONS --------------------------------------------
-
-saveVal :: IO ()
-saveVal = writeValidatorToFile "./assets/fortytwotyped.plutus" validator
-=======
 {-# LANGUAGE DataKinds           #-}
 {-# LANGUAGE ImportQualifiedPost #-}
 {-# LANGUAGE NoImplicitPrelude   #-}
@@ -51,7 +19,7 @@ import           Utilities            (wrap, writeValidatorToFile)
 -- This validator succeeds only if the redeemer is 42
 --              Datum  Redeemer        ScriptContext
 mk42Validator :: () -> Integer -> PlutusV2.ScriptContext -> Bool
-mk42Validator _ r _ = traceIfFalse "expected 42" $ r == 42
+mk42Validator _ r _ = traceIfFalse "expected 421" $ r == 421
 {-# INLINABLE mk42Validator #-}
 
 validator :: PlutusV2.Validator
@@ -62,4 +30,3 @@ validator = PlutusV2.mkValidatorScript $$(PlutusTx.compile [|| wrap mk42Validato
 
 saveVal :: IO ()
 saveVal = writeValidatorToFile "./assets/fortytwotyped.plutus" validator
->>>>>>> 22dac91e3821cc9cf356bdb0c89201175c73337c
