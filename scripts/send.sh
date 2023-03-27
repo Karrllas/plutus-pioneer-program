@@ -1,25 +1,20 @@
 #!/bin/bash
 
-assets=/workspaces/plutus-pioneer-program/code/Week02/assets
-keypath=/workspaces/plutus-pioneer-program/keys
+keypath="/workspaces/plutus-pioneer-program/keys"
 name="$1"
 txin="$2"
-body="$assets/gift.txbody"
-tx="$assets/gift.tx"
+name2="$3"
+amount="$4"
+body="/workspaces/plutus-pioneer-program/keys/send.txbody"
+tx="/workspaces/plutus-pioneer-program/keys/send.tx"
 
-# Build gift address 
-cardano-cli address build \
-    --payment-script-file "$assets/gift.plutus" \
-    --testnet-magic 2 \
-    --out-file "$assets/gift.addr"
 
 # Build the transaction
 cardano-cli transaction build \
     --babbage-era \
     --testnet-magic 2 \
     --tx-in "$txin" \
-    --tx-out "$(cat "$assets/gift.addr") + 3333333 lovelace" \
-    --tx-out-inline-datum-file "$assets/unit.json" \
+    --tx-out "$name2 + $amount lovelace" \
     --change-address "$(cat "$keypath/$name.addr")" \
     --out-file "$body"
     

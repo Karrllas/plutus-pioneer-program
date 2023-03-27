@@ -1,0 +1,19 @@
+{
+    "d810afce9979af8fd42ae0c93c58fa58380ee732dd74195e92631fd87dd6d065#0": {
+        "address": "addr_test1vzqk3dlasf40k5jvsf7lgzu64t2yeuu8sh8e32zwdma0myg89pyvs",
+        "datum": null,
+        "datumhash": null,
+        "inlineDatum": null,
+        "referenceScript": {
+            "script": {
+                "cborHex": "49480100002221200101",
+                "description": "",
+                "type": "PlutusScriptV2"
+            },
+            "scriptLanguage": "PlutusScriptLanguage PlutusScriptV2"
+        },
+        "value": {
+            "lovelace": 10222223
+        }
+    }
+}
